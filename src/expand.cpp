@@ -11,7 +11,7 @@ uint64_t expand(uint64_t input, uint32_t scale) {
 
     //Loop through each 64 bits
     for (size_t i = 0; i<64; ++i) {
-        if (input & (1ULL << 1)){ //mask to check if bit at position i is equal to 1
+        if (input & (1ULL << i)){ //mask to check if bit at position i is equal to 1
             uint64_t newPosition = static_cast<uint64_t>(i) * scale; //new position will be at i*scale
             if (newPosition < 64) { //If the expansion causes the result to be larger than 64 bits, we truncate the leftmost (most significant) bits.
                 result |= (1ULL << newPosition); // puts a 1 at that position
